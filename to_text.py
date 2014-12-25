@@ -30,13 +30,17 @@ print "Cleaning file text..."
 
 for entry in journal_entries:
 	dirty = entry.content.text
-	clean = re.sub("<.*?>", " ", dirty)
+	clean = re.sub("<.*?>", "", dirty)
+	clean = clean.replace('\n', ' ').replace('\r', '')
 	notes.append(clean)
+
+all_text = "\n\n".join(notes)
+all_text = all_text
+all_text = all_text.encode('utf8')
 
 print "Writing output..."
 
 with open(OUTPUT_FILE, 'w') as f:
-	for n in notes:
-		f.write(n.encode('utf8'))
+	f.write(all_text)
 
 print "Finished\n"
