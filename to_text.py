@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from xml.sax.saxutils import unescape
 import sys
 import re
 
@@ -37,6 +38,7 @@ for entry in journal_entries:
 all_text = "\n\n".join(notes)
 all_text = all_text
 all_text = all_text.encode('utf8')
+all_text = unescape(all_text, {"&apos;": "'", "&quot;": '"', "&nbsp;": " "})
 
 print "Writing output..."
 
