@@ -8,6 +8,7 @@ __pycache__/
 # This project
 results/
 texts/
+.DS_Store
 
 # Distribution / packaging
 .Python
